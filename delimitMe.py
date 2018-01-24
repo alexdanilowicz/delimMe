@@ -1,6 +1,6 @@
 # simple python script to convert input into comma seperated values, similar to delim.co
 # great for SQL queries.
-# Input: .txt file of values that you want to add double quotes and seperated by commas
+# Input: .txt file, values seperated by new line. Script adds double quotes and seperates by commas
 # Output: with_commas_ORIGINAL_FILENAME.csv and with_commas_ORIGINAL_FILENAME.txt
 #
 # Author: Alexander Danilowicz
@@ -18,7 +18,7 @@ def read_command_line():
 
 	if len(sys.argv) != 2:
 		print("Usage: too many or too few arguments")
-		print("Example usage: `python3 convert_column_into_CSV.py column.txt")
+		print("Example usage: `python3 delimMe.py column.txt")
 
 	column_file_name = str(sys.argv[1])
 
