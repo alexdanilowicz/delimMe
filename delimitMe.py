@@ -39,16 +39,24 @@ def convert(input, sol_filename, sol_txt_file):
 	sol_csv_f = open(sol_filename, 'wt')
 	sol_txt_f = open(sol_txt_file, 'wt')
 
+	lines = input_f.readlines()
+	last = lines[-1] # get last line
+
 	# loop through input file
-	for line in input_f:
+	for line in lines:
 		if line == "\n": # ignore blan lines
 			continue
 		no_new_line = line[:-1] # get rid of new line character
-		csv_line = str("\"" + no_new_line + "\", \n") # append double quotes / comma / and new line
+		csv_line = str("\"" + no_new_line + "\"") # append double quotes
 
-		# write it to both files
-		sol_csv_f.write(csv_line)
-		sol_txt_f.write(csv_line)
+		if line is last:
+				sol_csv_f.write(csv_line) # no comma or newline
+				sol_txt_f.write(csv_line) # no comma or newline
+		else:
+			# write it to both files
+			sol_csv_f.write(csv_line + ", \n") # comma / and new line
+			sol_txt_f.write(csv_line + ", \n") # comma / and new line
+
 	
 	# clean up
 	input_f.close()
